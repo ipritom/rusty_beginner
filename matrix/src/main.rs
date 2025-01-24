@@ -10,18 +10,19 @@ fn print_mat(matrix: &[Vec<i32>]) {
 
 fn mat_mul(mat1:&[Vec<i32>], mat2:&[Vec<i32>]){
     let mat2_c: usize = mat2[0].iter().count();
-    let mut temp: i32 = 0; // new element from summation
+    
     let mut new_mat=vec![];
     let mut count_mul :i32 = 0;
 
     // first matrix row-wise multiplication
     // iterate over m1 rows, and creating new mat rows
     for row in mat1{
-        let mut r2 : usize = 0;
-        let mut c2 : usize = 0;
-
+        let mut r2 : usize = 0; // second matrix row 
+        let mut c2 : usize = 0; // second matrix col
         let mut new_row = vec![];
+        
         while c2 < mat2_c {
+            let mut temp: i32 = 0; // new element for new mat
             for element in row{
                 temp = temp + element*mat2[r2][c2];
                 r2 +=1;
@@ -30,7 +31,6 @@ fn mat_mul(mat1:&[Vec<i32>], mat2:&[Vec<i32>]){
             new_row.push(temp);
             c2 +=1;
             r2 = 0;
-            temp=0;
             
         }
        
